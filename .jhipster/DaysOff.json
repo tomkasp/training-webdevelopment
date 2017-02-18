@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "dayOffType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "daysOff"
+        },
+        {
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dayOffDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170115143346",
+    "entityTableName": "days_off",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "angularJSSuffix": "mySuffix"
+}

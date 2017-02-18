@@ -1,0 +1,64 @@
+<div>
+    <h2>Days Offs</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="days-offmySuffix.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Days Off
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Day Off Date</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Employee</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="daysOff in vm.daysOffs track by daysOff.id">
+                    <td><a ui-sref="days-offmySuffix-detail({id:daysOff.id})">{{daysOff.id}}</a></td>
+                    <td>{{daysOff.dayOffDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="day-off-typemySuffix-detail({id:daysOff.typeId})">{{daysOff.typeId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="employeemySuffix-detail({id:daysOff.employeeId})">{{daysOff.employeeId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="days-offmySuffix-detail({id:daysOff.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="days-offmySuffix.edit({id:daysOff.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="days-offmySuffix.delete({id:daysOff.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

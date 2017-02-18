@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traingig page</title>
+</head>
+<body>
+
+<div id="tab">
+    <table id="list" cellspacing="0px" cellpadding="20px" text-align="center">
+        <thead>
+        <tr>
+            <td>yearly allowance</td>
+            <td>carry over days</td>
+            <td>available vacations</td>
+            <td>planned vacations</td>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+<script>
+
+
+    function reqListener() {
+        console.log(JSON.parse(this.responseText));
+        var elements = JSON.parse(this.responseText);
+        var rows = "";
+        for (var i = 0; i < elements.length; i++) {
+
+
+            rows += "<td>" + elements[i].available_vacations + "</td>" +
+                "<td>" + elements[i].carry_over_days + "</td>" +
+                "<td>" + elements[i].planned_vacations + "</td>" +
+                "<td>" + elements[i].yearly_allowance + "</td>";
+        }
+        var tr = document.createElement("tr");
+        var tbody = document.querySelector("#list tbody");
+        tr.innerHTML = rows;
+        tbody.appendChild(tr)
+    }
+
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", reqListener);
+    oReq.open("GET", "http://localhost:8081/training/employeesreport");
+    //    oReq.setRequestHeader('Access-Control-Allow-Headers', '*');
+    oReq.send();
+
+</script>
+
+
+</body>
+</html>
+
+

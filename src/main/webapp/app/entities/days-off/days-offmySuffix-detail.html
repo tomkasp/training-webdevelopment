@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Days Off</span> {{vm.daysOff.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Day Off Date</span></dt>
+        <dd>
+            <span>{{vm.daysOff.dayOffDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <a ui-sref="day-off-typemySuffix-detail({id:vm.daysOff.typeId})">{{vm.daysOff.typeId}}</a>
+        </dd>
+        <dt><span>Employee</span></dt>
+        <dd>
+            <a ui-sref="employeemySuffix-detail({id:vm.daysOff.employeeId})">{{vm.daysOff.employeeId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="days-offmySuffix-detail.edit({id:vm.daysOff.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

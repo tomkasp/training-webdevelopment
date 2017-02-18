@@ -1,0 +1,101 @@
+entity Region {
+	regionName String
+}
+
+entity Country {
+	countryName String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity DaysOff{
+	dayOffDate ZonedDateTime,
+}
+
+entity DayOffType{
+	name String,
+    description String
+}
+
+entity Department {
+	departmentName String required
+}
+
+/**
+ * The Employee entity.
+ */
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	hireDate ZonedDateTime,
+	carryOverDays Integer,
+    yearlyAllowence Integer    
+}
+
+
+
+
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne{
+	DaysOff{type} to DayOffType
+}
+
+relationship OneToMany{
+	Employee{daysOff} 
+    to
+    DaysOff
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}
+
+relationship OneToOne {
+	Department{location} to Location
+}
+
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	/**
+	* A relationship
+	*/
+	Department{employee} to
+	/**
+	* Another side of the same relationship
+	*/
+	Employee
+}
+
+relationship ManyToOne {
+	Employee{manager} to Employee
+}
+
+
+// Set pagination options
+dto * with mapstruct
+
+// Set an angular suffix
+angularSuffix * with mySuffix
